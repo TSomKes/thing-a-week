@@ -12,3 +12,7 @@ experiment.
 I hope to do a bit of the same:  Do some things that are actually visible to
 the world, and are (hopefully) occasionally interesting, or at least not
 cripplingly embarrassing.
+
+Things
+------
+* [Week 1:  Abbreviation & Debreviation, i18n-Style](week1/README.md)
