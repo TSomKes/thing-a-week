@@ -13,3 +13,9 @@ In an effort to automate the fun away, I've decided to make a quick script that 
 
 Things I learned while doing this
 ---------------------------------
+I didn't know about fileinput, which I learned about here:  http://stackoverflow.com/a/1454400/18347.  
+
+Using this gives us "expected" Unix-y behavior:  you can pass in standard input, or you can pass a filename in as an argument.  In other words, either of these work:
+
+    $ python ./abbreviate.py README.md
+	 $ cat README | python ./abbreviate.py
