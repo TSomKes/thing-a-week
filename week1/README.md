@@ -18,4 +18,4 @@ I didn't know about fileinput, which I learned about here:  http://stackoverflow
 Using this gives us "expected" Unix-y behavior:  you can pass in standard input, or you can pass a filename in as an argument.  In other words, either of these work:
 
     $ python ./abbreviate.py README.md
-	 $ cat README | python ./abbreviate.py
+    $ cat README | python ./abbreviate.py
