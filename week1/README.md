@@ -22,6 +22,22 @@ Also:  Thank you, Project Gutenberg, for all of my test literature.
 Specifically, the text of the Declaration of Independence that I used came from
 here:  http://www.gutenberg.org/files/16780/16780-0.txt.
 
+Example
+-------
+Running part of the Declaration of Independence through this code, with an
+abbreviation threshold of eight (meaning word eight characters or longer will
+be abbreviated), turns this:
+
+> The unanimous Declaration of the thirteen united States of America
+
+into this:
+
+> The u7s D9n of the t6n united States of America
+
+If we drop the threshold to five, we get this:
+
+> The u7s D9n of the t6n u4d S4s of A5a
+
 Things I learned while doing this
 ---------------------------------
 I didn't know about fileinput, which I learned about here:
