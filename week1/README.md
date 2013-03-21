@@ -40,6 +40,8 @@ If we drop the threshold to five, we get this:
 
 Things I learned while doing this
 ---------------------------------
+fileinput
+---------
 I didn't know about fileinput, which I learned about here:
 http://stackoverflow.com/a/1454400/18347.  
 
@@ -49,3 +51,24 @@ these work:
 
     $ python ./abbreviate.py README.md
     $ cat README | python ./abbreviate.py
+
+Regex vs. iterating-over-characters
+-----------------------------------
+Initially, I worried that I might be introducing too much overhead with the
+regex approach to finding candidate words for abbreviation.  I tried
+implementing a character-by-character iteration of the line instead, which
+would identify words by isalpha() checks on the individual characters.  If the
+words were long enough, they'd be abbreviated as they were added to the
+processed string.
+
+This seems to have been a bit faster for shorter input strings, and quite a
+bit slower for longer input strings.  I don't know if this is the case, but I
+wonder if the regex overhead is too much for tiny inputs, but that the
+efficiency overtakes the overhead for longer inputs.
+
+This is all wild guessing, though.
+
+TODO
+----
+Does this have to be line-at-a-time?  Can I do searching/finding/replacing over
+the entire input?  (And if I can, would that be faster or slower?)
