@@ -23,7 +23,26 @@ def AbbreviateLine(line, threshold):
 
         processed_words.append(sequence)
 
-    return " ".join(processed_words)
+    # We're eliminating all the whitspace, so we need to re-add our own newline
+    return " ".join(processed_words) + '\r\n'
+
+
+def AbbreviateLine2(line, threshold):
+    abbreviated_line = ""
+
+    word = ""
+    for c in line:
+        if c.isalpha():
+            word += c
+        else:
+            if word != "":
+                if len(word) >= threshold:
+                    word = word[0] + str(len(word) - 2) + word[-1]
+                abbreviated_line += word
+                word = ""
+            abbreviated_line += c
+
+    return abbreviated_line
 
 # We'll be using this regex a lot; compile it here.
 word_pattern = re.compile(r"\b[a-z]+\b", re.I)
@@ -35,6 +54,6 @@ processed_lines = []
 for line in fileinput.input():
     processed_lines.append(AbbreviateLine(line, abbreviation_threshold))
 
-output = "\n".join(processed_lines)
+output = "".join(processed_lines)
 
 print output
