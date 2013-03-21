@@ -8,9 +8,9 @@ def AbbreviateLine(line, threshold):
     processed_words = []
 
     # Find whitespace-delimited "sequences", and see if they contain words long
-    # enough to match our criteria.  For example, in the string "I think,
-    # therefore I am", one such sequence would be "think,".  We want to isolate
-    # the word "think" from the comma before we work on it.
+    # enough to match our criteria.  For example, in the string "monkey see,
+    # monkey do", one such sequence would be "see,".  We want to isolate the 
+    # word "see" from the comma before we work on it.
     for sequence in line.split():
         match = word_pattern.search(sequence)
 
