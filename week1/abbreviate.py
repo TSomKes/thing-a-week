@@ -27,23 +27,6 @@ def AbbreviateLine(line, threshold):
     return " ".join(processed_words) + '\r\n'
 
 
-def AbbreviateLine2(line, threshold):
-    abbreviated_line = ""
-
-    word = ""
-    for c in line:
-        if c.isalpha():
-            word += c
-        else:
-            if word != "":
-                if len(word) >= threshold:
-                    word = word[0] + str(len(word) - 2) + word[-1]
-                abbreviated_line += word
-                word = ""
-            abbreviated_line += c
-
-    return abbreviated_line
-
 # We'll be using this regex a lot; compile it here.
 word_pattern = re.compile(r"\b[a-z]+\b", re.I)
 
