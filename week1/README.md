@@ -1,4 +1,4 @@
-Thing-a-Week, Week 1:  Abbreviation & Debreviation, i18n-Style
+Thing-a-Week, Week 1:  Abbreviation, i18n-Style
 ========
 
 Overview

@@ -15,4 +15,4 @@ cripplingly embarrassing.
 
 Things
 ------
-* [Week 1:  Abbreviation & Debreviation, i18n-Style](week1/)
+* [Week 1:  Abbreviation, i18n-Style](week1/)
