@@ -1,16 +1,10 @@
 import fileinput
 import re
 
-# We'll be using this regex a lot; compile it here.
-word_pattern = re.compile(r"\b[a-z]+\b", re.I)
 
-abbreviation_threshold = 10
-
-processed_lines = []
-
-for line in fileinput.input():
-    # We'll rebuild our abbreviated line word by word, checking each word to see
-    # if it needs to be abbreviated.
+def AbbreviateLine(line, threshold):
+    # We'll rebuild our abbreviated line word by word, checking each word to
+    # see if it needs to be abbreviated.
     processed_words = []
 
     # Find whitespace-delimited "sequences", and see if they contain words long
@@ -29,7 +23,17 @@ for line in fileinput.input():
 
         processed_words.append(sequence)
 
-    processed_lines.append(" ".join(processed_words))
+    return " ".join(processed_words)
+
+# We'll be using this regex a lot; compile it here.
+word_pattern = re.compile(r"\b[a-z]+\b", re.I)
+
+abbreviation_threshold = 10
+
+processed_lines = []
+
+for line in fileinput.input():
+    processed_lines.append(AbbreviateLine(line, abbreviation_threshold))
 
 output = "\n".join(processed_lines)
 
