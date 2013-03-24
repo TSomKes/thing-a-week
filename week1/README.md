@@ -40,8 +40,7 @@ If we drop the threshold to five, we get this:
 
 Things I learned while doing this
 ---------------------------------
-fileinput
----------
+### fileinput ###
 I didn't know about fileinput, which I learned about here:
 http://stackoverflow.com/a/1454400/18347.  
 
@@ -52,8 +51,7 @@ these work:
     $ python ./abbreviate.py README.md
     $ cat README | python ./abbreviate.py
 
-Regex vs. iterating-over-characters
------------------------------------
+### Regex vs. iterating-over-characters ###
 Initially, I worried that I might be introducing too much overhead with the
 regex approach to finding candidate words for abbreviation.  I tried
 implementing a character-by-character iteration of the line instead, which
