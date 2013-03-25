@@ -1,0 +1,5 @@
+Ideas for future things:
+- Refrigerator magnet word generator
+- Markov chain literature
+- Full name generator (using...some name lists)
+- Project name generator (using part-of-speech lists)
