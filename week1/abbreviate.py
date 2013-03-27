@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import fileinput
 import re
 
@@ -23,7 +25,7 @@ def AbbreviateLine(line, threshold):
 
         processed_words.append(sequence)
 
-    # We're eliminating all the whitspace, so we need to re-add our own newline
+    # We're eliminating all the whitespace, so we need to re-add our own newline
     return " ".join(processed_words) + '\r\n'
 
 
