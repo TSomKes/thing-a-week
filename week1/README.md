@@ -48,8 +48,8 @@ Using this gives us "expected" Unix-y behavior:  you can pass in standard
 input, or you can pass a filename in as an argument.  In other words, either of
 these work:
 
-    $ python ./abbreviate.py README.md
-    $ cat README | python ./abbreviate.py
+    $ ./abbreviate.py README.md
+    $ cat README | ./abbreviate.py
 
 ### Regex vs. iterating-over-characters ###
 Initially, I worried that I might be introducing too much overhead with the
