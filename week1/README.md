@@ -12,7 +12,7 @@ for people already familiar with the concept of internationalization, or at
 least the term.)
 
 In an effort to automate the fun away, I've decided to make a quick script that
-dehydrates & rehydrates a given string using this form of compression.
+dehydrates a given string using this form of compression.
 
 (NB:  This form of abbreviation apparently falls under the umbrella term
 [numeronym](http://en.wikipedia.org/wiki/Numeronym), which seems unfortunate.
