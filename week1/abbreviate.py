@@ -4,8 +4,8 @@ import fileinput
 import re
 
 
-def AbbreviateLine(line, threshold):
-    """Rebuild the line word by word, abbreviating each word if needed."""
+def A8e(line, threshold):
+    """Return a string with long words abbreviated i18n-style."""
     processed_words = []
 
     regex = r"\b[a-z]+\b"
@@ -33,4 +33,4 @@ def AbbreviateLine(line, threshold):
 abbreviation_threshold = 10
 
 for line in fileinput.input():
-    print AbbreviateLine(line, abbreviation_threshold)
+    print A8e(line, abbreviation_threshold)
