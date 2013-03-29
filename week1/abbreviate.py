@@ -25,8 +25,7 @@ def AbbreviateLine(line, threshold):
 
         processed_words.append(sequence)
 
-    # We're eliminating all the whitespace, so we need to re-add our own newline
-    return " ".join(processed_words) + '\r\n'
+    return " ".join(processed_words)
 
 
 # We'll be using this regex a lot; compile it here.
@@ -34,11 +33,6 @@ word_pattern = re.compile(r"\b[a-z]+\b", re.I)
 
 abbreviation_threshold = 10
 
-processed_lines = []
 
 for line in fileinput.input():
-    processed_lines.append(AbbreviateLine(line, abbreviation_threshold))
-
-output = "".join(processed_lines)
-
-print output
+    print AbbreviateLine(line, abbreviation_threshold)
