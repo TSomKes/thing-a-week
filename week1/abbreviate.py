@@ -5,16 +5,18 @@ import re
 
 
 def AbbreviateLine(line, threshold):
-    # We'll rebuild our abbreviated line word by word, checking each word to
-    # see if it needs to be abbreviated.
+    """Rebuild the line word by word, abbreviating each word if needed."""
     processed_words = []
 
+    regex = r"\b[a-z]+\b"
+
     # Find whitespace-delimited "sequences", and see if they contain words long
-    # enough to match our criteria.  For example, in the string "monkey see,
-    # monkey do", one such sequence would be "see,".  We want to isolate the 
-    # word "see" from the comma before we work on it.
+    # enough to match our criteria.  
+    # For example, in the string "monkey see, monkey do", one such sequence
+    # would be "see,".  We want to isolate the word "see" from the comma before
+    # we work on it.
     for sequence in line.split():
-        match = word_pattern.search(sequence)
+        match = re.search(regex, sequence, re.I)
 
         if match:
             word = match.group(0)
@@ -28,11 +30,7 @@ def AbbreviateLine(line, threshold):
     return " ".join(processed_words)
 
 
-# We'll be using this regex a lot; compile it here.
-word_pattern = re.compile(r"\b[a-z]+\b", re.I)
-
 abbreviation_threshold = 10
-
 
 for line in fileinput.input():
     print AbbreviateLine(line, abbreviation_threshold)
