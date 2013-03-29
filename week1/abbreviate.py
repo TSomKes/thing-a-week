@@ -4,7 +4,7 @@ import fileinput
 import re
 
 
-def A8e(line, threshold):
+def A8e(line, threshold=10):
     """Return a string with long words abbreviated i18n-style."""
     processed_words = []
 
@@ -21,7 +21,7 @@ def A8e(line, threshold):
         if match:
             word = match.group(0)
             length = len(word)
-            if length >= abbreviation_threshold:
+            if length >= threshold:
                 abbreviated_word = word[0] + str(length - 2) + word[-1]
                 sequence = sequence.replace(word, abbreviated_word)
 
@@ -30,7 +30,5 @@ def A8e(line, threshold):
     return " ".join(processed_words)
 
 
-abbreviation_threshold = 10
-
 for line in fileinput.input():
-    print A8e(line, abbreviation_threshold)
+    print A8e(line)
