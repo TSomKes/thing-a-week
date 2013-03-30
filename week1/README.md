@@ -66,7 +66,10 @@ efficiency overtakes the overhead for longer inputs.
 
 This is all wild guessing, though.
 
-TODO
-----
-Does this have to be line-at-a-time?  Can I do searching/finding/replacing over
-the entire input?  (And if I can, would that be faster or slower?)
+### Regex findall()  ###
+I think my early attempts to roll my own way of iterating over the string
+looking for regex hits was misguided.  It ended up being harder to understand,
+and (I suspect) less Python-idiomatic ("Pythonic") than later approaches.
+
+I'm not convinced that I've landed on the optimal solution, but it's good
+enough for now.
