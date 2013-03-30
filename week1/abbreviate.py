@@ -6,29 +6,19 @@ import re
 
 def A8e(line, threshold=10):
     """Return a string with long words abbreviated i18n-style."""
-    processed_words = []
 
-    regex = r"\b[a-z]+\b"
+    # Find all words with at least [threshold] sequential letters
+    regex = r"\b[a-z]{%d,}\b" % threshold
 
-    # Find whitespace-delimited "sequences", and see if they contain words long
-    # enough to match our criteria.
-    # For example, in the string "monkey see, monkey do", one such sequence
-    # would be "see,".  We want to isolate the word "see" from the comma before
-    # we work on it.
-    for sequence in line.split():
-        match = re.search(regex, sequence, re.I)
+    longWords = re.findall(regex, line, re.IGNORECASE)
 
-        if match:
-            word = match.group(0)
-            length = len(word)
-            if length >= threshold:
-                abbreviated_word = word[0] + str(length - 2) + word[-1]
-                sequence = sequence.replace(word, abbreviated_word)
+    for word in longWords:
+        innerLength = len(word) - 2
+        abbreviatedWord = word[0] + str(innerLength) + word[-1]
+        line = line.replace(word, abbreviatedWord)
 
-        processed_words.append(sequence)
-
-    return " ".join(processed_words)
+    return line
 
 
 for line in fileinput.input():
-    print A8e(line)
+    print A8e(line),
