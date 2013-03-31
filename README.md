@@ -17,3 +17,4 @@ Things
 ------
 * [Week 1:  Abbreviation, i18n-Style](week1/)
 * [Week 2:  Debreviation, i18n-Style](week2/)
+* [Week 3:  ???](week3/)
