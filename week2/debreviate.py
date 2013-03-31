@@ -23,6 +23,19 @@ def GetAbbreviationRegexPattern(abb):
     return "^%s[a-z]{%d}%s$" % (abb[0], missingLetterCount, abb[-1])
 
 
+def GetMatchesFromWordFile(pattern):
+    """Return list of matched words from word file."""
+
+    with open("/usr/share/dict/words") as wordFile:
+        words = []
+        for line in wordFile:
+            match = re.match(pattern, line, re.IGNORECASE)
+            if match:
+                words.append(match.group(0))
+
+    return words
+
+
 def GetMatchingWords(abbreviations):
     """
     Return a dictionary of lists of words matching the given abbreviations
@@ -35,18 +48,10 @@ def GetMatchingWords(abbreviations):
     """
     matchDict = {}
 
-    with open("/usr/share/dict/words") as wordFile:
-        for abb in abbreviations:
-            if abb not in matchDict.keys():
-                pattern = GetAbbreviationRegexPattern(abb)
-
-                wordFile.seek(0)
-                words = []
-                for line in wordFile:
-                    match = re.match(pattern, line, re.IGNORECASE)
-                    if match:
-                        words.append(match.group(0))
-                matchDict[abb] = words
+    for abb in abbreviations:
+        if abb not in matchDict.keys():
+            pattern = GetAbbreviationRegexPattern(abb)
+            matchDict[abb] = GetMatchesFromWordFile(pattern)
 
     return matchDict
 
