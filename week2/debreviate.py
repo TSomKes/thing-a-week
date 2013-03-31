@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import fileinput
+import random
 import re
 
 
@@ -8,9 +9,9 @@ def GetAbbreviations(line):
     """Return a list of all i18n-style abbreviations in the given string."""
 
     # Find strings with: single letter, 1+ numbers, single letter
-    regex = r"\b[a-z][0-9]+[a-z]\b"
+    pattern = r"\b[a-z][0-9]+[a-z]\b"
 
-    return re.findall(regex, line, re.IGNORECASE)
+    return re.findall(pattern, line, re.IGNORECASE)
 
 
 def GetAbbreviationRegexPattern(abb):
@@ -44,7 +45,7 @@ def GetMatchingWords(abbreviations):
     (Note:  May contain duplicates, which will be removed during processing.)
 
     Returned dictionary will be of the shape
-    { 'c2t' : ['cart', 'coat', 'colt'], 'f4d' : ['faired', 'feared']}
+    { 'c2t' : ['cart', 'coat', 'colt'], 'f4d' : ['faired', 'feared'] }
     """
     matchDict = {}
 
@@ -56,22 +57,28 @@ def GetMatchingWords(abbreviations):
     return matchDict
 
 
+def DebreviateLine(line, matchedWords):
+    """Replace all abbreviations in given line with words from matchedWords. """
+    abbreviatedWords = GetAbbreviations(line)
+    for abb in abbreviatedWords:
+        longWord = random.choice(matchingWords[abb])
+        line = line.replace(abb, longWord, 1)
+
+    return line
+
+
 lines = []
 
 # Make a local copy of the lines
 for line in fileinput.input():
     lines.append(line)
 
-
 abbreviations = []
 
 for line in lines:
-    abbreviationsNew = GetAbbreviations(line)
-    if abbreviationsNew:
-        abbreviations.extend(abbreviationsNew)
-
-abbreviations.sort()
+    abbreviations.extend(GetAbbreviations(line))
 
 matchingWords = GetMatchingWords(abbreviations)
 
-print matchingWords
+for line in lines:
+    print DebreviateLine(line, matchingWords),
