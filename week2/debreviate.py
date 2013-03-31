@@ -61,8 +61,12 @@ def DebreviateLine(line, matchedWords):
     """Replace all abbreviations in given line with words from matchedWords. """
     abbreviatedWords = GetAbbreviations(line)
     for abb in abbreviatedWords:
-        longWord = random.choice(matchingWords[abb])
-        line = line.replace(abb, longWord, 1)
+        matchedWord = random.choice(matchingWords[abb])
+
+        # Keep the first letter of the abbreviation to preserve its case
+        newWord = abb[0] + matchedWord[1:]
+        
+        line = line.replace(abb, newWord, 1)
 
     return line
 
