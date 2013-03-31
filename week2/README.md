@@ -40,3 +40,11 @@ information!
 
 One thing I haven't learned:  how to name variables & functions.  Boy, do those
 things need fixin'.
+
+Notes
+-----
+I'm not terribly happy with the way this searches the word file for matching
+words.  Walking the file once per pattern we're trying to match feels
+inefficient.  On the other hand, walking the file once and comparing against
+each of the patterns also sounds inefficient.  (I suppose I should set both up
+& time them sometime.)
