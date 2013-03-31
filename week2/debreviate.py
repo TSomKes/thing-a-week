@@ -13,6 +13,16 @@ def GetAbbreviations(line):
     return re.findall(regex, line, re.IGNORECASE)
 
 
+def GetAbbreviationRegexPattern(abb):
+    """Return regex pattern string matching abbreviation."""
+
+    # "i18n" --> 18
+    missingLetterCount = int(abb[1:-1])
+
+    # "i18n" --> "^i[a-z]{18}n$"
+    return "^%s[a-z]{%d}%s$" % (abb[0], missingLetterCount, abb[-1])
+
+
 def GetMatchingWords(abbreviations):
     """
     Return a dictionary of lists of words matching the given abbreviations
@@ -28,8 +38,7 @@ def GetMatchingWords(abbreviations):
     with open("/usr/share/dict/words") as wordFile:
         for abb in abbreviations:
             if abb not in matchDict.keys():
-                missingLetterCount = int(abb[1:-1])
-                pattern = '^%s[a-z]{%d}%s$' % (abb[0], missingLetterCount, abb[-1])
+                pattern = GetAbbreviationRegexPattern(abb)
 
                 wordFile.seek(0)
                 words = []
