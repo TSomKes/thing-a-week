@@ -13,6 +13,18 @@ command line parameters in Python.
 
 Example
 -------
+Like it says on the tin:
+
+> F Emily Shakespeare
+> M Ed Bergman
+> M Truman Roosevelt
+> M Albert Churchill
+> F Hellen Bergman
+> M Upton Travolta
+> F Amelia Frank
+> M Uwe Ball
+> F Ingrid Keller
+> F Sally Andrews
 
 Things I learned while doing this
 ---------------------------------
