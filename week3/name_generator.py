@@ -4,11 +4,14 @@ import random
 
 
 def GetRandomName(filename):
+    """Return randomly-selected name from the given file"""
+
     with open(filename) as nameFile:
         return random.choice(nameFile.read().splitlines())
 
 
 def GetName(gender):
+    """Return randomly-assembled gender-appropriate name"""
     if gender == 'F':
         firstName = GetRandomName("first_female.txt")
     elif gender == 'M':
