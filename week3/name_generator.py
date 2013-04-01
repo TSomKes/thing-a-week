@@ -1,6 +1,24 @@
 #!/usr/bin/env python
 
+import argparse
 import random
+
+
+def ParseArguments():
+    parser = argparse.ArgumentParser("./name_generator.py [OPTION]... [FILE]")
+
+    parser.add_argument("-c",
+            "--count",
+            type=int,
+            default=1,
+            help="the number of names to be generated (default: %(default)s)")
+    parser.add_argument("-g",
+            "--gender",
+            choices=['?', 'f', 'm'],
+            default='?',
+            help="the gender of the name(s) to be generated (default: %(default)s)")
+
+    return parser.parse_args()
 
 
 def GetRandomName(filename):
@@ -12,9 +30,9 @@ def GetRandomName(filename):
 
 def GetName(gender):
     """Return randomly-assembled gender-appropriate name"""
-    if gender == 'F':
+    if gender == 'f':
         firstName = GetRandomName("first_female.txt")
-    elif gender == 'M':
+    elif gender == 'm':
         firstName = GetRandomName("first_male.txt")
     else:
         firstName = "It's Pat"
@@ -26,6 +44,10 @@ def GetName(gender):
     return gender + " " + fullName
 
 
-for i in range(10):
-    gender = random.choice(['F', 'M'])
+args = ParseArguments()
+
+gender = args.gender
+count = args.count
+
+for i in range(count):
     print GetName(gender)
