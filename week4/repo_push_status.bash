@@ -9,13 +9,13 @@
 code_dir=~/code/
 
 # Find all project directories immediately under code folder
-for dir in `find $code_dir -maxdepth 1 -mindepth 1 -type d`
+for dir in `find $code_dir -maxdepth 1 -mindepth 1 -type d | sort`
 do
 	# Move into $dir, in case we find a repo, so that the git/hg commands work
 	# relative to the working directory
 	cd $dir
 
-	project=$dir
+	project=${PWD##*/}
 
 	# .git directory found?  Git repo.
 	if [ -d $dir"/.git" ]; then
