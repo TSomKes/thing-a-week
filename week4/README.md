@@ -1,5 +1,5 @@
-Thing-a-Week, Week 3:  Name Generator
-=====================================
+Thing-a-Week, Week 4:  Multi-project, multi-DVCS status script
+==============================================================
 
 Overview
 --------

@@ -18,4 +18,4 @@ Things
 * [Week 1:  Abbreviation, i18n-Style (Python)](week1/)
 * [Week 2:  Debreviation, i18n-Style (Python)](week2/)
 * [Week 3:  Name Generator (Python)](week3/)
-* [Week 4:  Multi-project DVCS status (Bash)](week4/)
+* [Week 4:  Multi-project, multi-DVCS status script (Bash)](week4/)
