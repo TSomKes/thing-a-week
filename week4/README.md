@@ -32,6 +32,7 @@ $ ./repo_push_status.bash
 /home/tsomkes/code/thing-a-week - Git
 /home/tsomkes/code/orangutan - Git
 /home/tsomkes/code/dotfiles - Git
+```
 
 Things I learned while doing this
 ---------------------------------
