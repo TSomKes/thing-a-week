@@ -8,9 +8,6 @@
 
 code_dir=~/code/
 
-git_syncd_message="Everything up-to-date"
-hg_syncd_message="no changes found"
-
 # Find all project directories immediately under code folder
 for dir in `find $code_dir -maxdepth 1 -mindepth 1 -type d`
 do
@@ -18,37 +15,34 @@ do
 	# relative to the working directory
 	cd $dir
 
-	status=$dir
+	project=$dir
 
 	# .git directory found?  Git repo.
 	if [ -d $dir"/.git" ]; then
-
-		status+="- Git - "
-
-		git_output=$(git push --dry-run 2>&1)
-		if [[ "$git_output" == *"$git_syncd_message"* ]]; then
-			status+="sync'd"
-		else 
-			status+="un-sync'd local changes found"
-		fi
+		dvcs="Git"
+		dvcs_output=$(git push --dry-run 2>&1) # Git puts our message on stderr
+		syncd_message="Everything up-to-date"
 
 	# .hg directory found?  Hg repo.
 	elif [ -d $dir"/.hg" ]; then
-
-		status+="- Hg - "
-
-		hg_output=$(hg outgoing)
-		if [[ "$hg_output" == *"$hg_syncd_message"* ]]; then
-			status+="sync'd"
-		else 
-			status+="un-sync'd local changes found"
-		fi
+		dvcs="Hg"
+		dvcs_output=$(hg outgoing)
+		syncd_message="no changes found"
 
 	else
-		status+="- no repo found"
+		dvcs="no repo found"
+		dvcs_output=""
+		syncd_message="not applicable"
 	fi
 
-	echo $status
+	# If dvcs_output contains syncd_message, local repo has no un-pushed commits
+	if [[ "$dvcs_output" == *"$syncd_message"* ]]; then
+		status="sync'd"
+	else 
+		status="un-pushed local commits found"
+	fi
+
+	echo $project" - "$dvcs" - "$status
 
 	# Move back to the original directory, just 'cause.
 	cd $code_dir
