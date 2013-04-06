@@ -18,20 +18,18 @@ I figured I should try to put together a little script to help me with that.
 
 Example
 -------
-At the moment:
-
 ```
 $ ./repo_push_status.bash
-/home/tsomkes/code/homework - Git
-/home/tsomkes/code/tsomkes.com - Hg
-/home/tsomkes/code/rando - Hg
-/home/tsomkes/code/journal - Hg
-/home/tsomkes/code/sketchbook - Git
-/home/tsomkes/code/beaker - Git
-/home/tsomkes/code/arcade - Git
-/home/tsomkes/code/thing-a-week - Git
-/home/tsomkes/code/orangutan - Git
-/home/tsomkes/code/dotfiles - Git
+arcade - Git - sync'd
+beaker - Git - un-pushed local commits found
+dotfiles - Git - sync'd
+homework - Git - sync'd
+journal - Hg - sync'd
+orangutan - Git - sync'd
+rando - Hg - sync'd
+sketchbook - Git - sync'd
+thing-a-week - Git - un-pushed local commits found
+tsomkes.com - Hg - un-pushed local commits found
 ```
 
 Things I learned while doing this
@@ -51,3 +49,8 @@ Why on earth does Git send its "Everything up-to-date" message to stderr?  I
 chased problems with that for many, many minutes, all the time assuming my
 stdout-to-variable technique was wrong.  Well, it might still be wrong, but it
 works.
+
+Thanks to
+http://stackoverflow.com/questions/1371261/get-current-directory-name-without-full-path-in-bash-script,
+I was able to get the project name out of the current working directory.  (Some
+day, I need to learn how/why this works, this parameter expansion thing...)
