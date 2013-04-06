@@ -40,5 +40,14 @@ My Bash Fu is very weak, and I was afraid finding all the project directories
 under code/ was going to be very difficult.  Turns out find made it super-easy:
 http://stackoverflow.com/questions/2107945/how-to-loop-over-directories-in-linux.
 
+...holy crap, I don't know what I'm doing here.  Bash is a tangled mess.  My
+script works, but I imagine it's littered with efficiency issues,
+quote-escaping issues, etc.
+
 I have no idea if I'm doing the string concatenation for the path-building
 correctly, but it seems to be working.  
+
+Why on earth does Git send its "Everything up-to-date" message to stderr?  I
+chased problems with that for many, many minutes, all the time assuming my
+stdout-to-variable technique was wrong.  Well, it might still be wrong, but it
+works.
