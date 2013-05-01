@@ -2,3 +2,5 @@ Ideas for future things:
 - Refrigerator magnet word generator
 - Markov chain literature
 - Project name generator (using part-of-speech lists)
+- Old-timey newspaper typo generator (using keyboard character proximity)
+- "Plush Platypus" Ubuntu-style project namer (via parts-of-speech list)
