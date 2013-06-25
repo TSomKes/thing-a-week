@@ -4,3 +4,4 @@ Ideas for future things:
 - Project name generator (using part-of-speech lists)
 - Old-timey newspaper typo generator (using keyboard character proximity)
 - "Plush Platypus" Ubuntu-style project namer (via parts-of-speech list)
+- Somebody's lowercase Fs look just like lowercase Ts.  Is that more efficient, to eliminate glyphs?  Are there any letters that never occupy the same space in (some subset of) English words?  Where it wouldn't be possible to confuse the meaning/pronunciation of the word?
